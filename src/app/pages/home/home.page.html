@@ -1,0 +1,20 @@
+<app-toolbar></app-toolbar>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="6" size-md="4" size-lg="3" 
+          *ngFor="let image of sharedDataService?.apiResponse?.results; let i=index;"
+          (click)="onImageClick(image, i)">
+        <ion-img [src]="image.urls.regular" alt="New-Solution-Image"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll *ngIf="hasMoreData()" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more images...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,18 @@
+<app-toolbar [title]="title"></app-toolbar>
+
+<ion-content>
+  <ion-slides #imageSlider pager="false" [options]="slideOpts" (ionSlideTransitionEnd)="ionSlideTransitionEnd($event)">
+    <ion-slide *ngFor="let image of sharedDataService?.apiResponse?.results;" >
+      <img [src]="image.urls.regular" alt="slide-1" />
+    </ion-slide>
+  </ion-slides>
+  
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <p>{{page}} / {{sharedDataService?.apiResponse?.results?.length}}</p>
+      </div>
+    </ion-col>
+  </ion-row>
+  
+</ion-content> 
